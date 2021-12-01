@@ -1,50 +1,61 @@
+# tag::parseInput[]
+def parseInput(file):
+    """parse input file to list of int"""
+    with open(file, 'r') as f:
+        int_list = [int(x) for x in f]
+    return int_list
+# end::parseInput[]
 
-def doSomething(lines):
+# tag::countIncreased[]
+def countIncreased(values):
+    """check consecutive values for increases"""
     prev_depth = None
     increased = 0
-    for line in lines:
-        depth = int(line)
+    for depth in values:
         if prev_depth is not None and depth > prev_depth:
             increased += 1
         prev_depth = depth
     return increased
+# end::countIncreased[]
 
-def doSomethingNew(lines):
-    prev_block = None
-    increased = 0
-    max_block = len(lines) - 2
-    i = 0
-    while i < max_block:
-        block = int(lines[i]) + int(lines[i+1]) + int(lines[i+2])
-        if prev_block is not None and block > prev_block:
-            increased += 1
-        prev_block = block
+# tag::buildBlocks[]
+def buildBlocks(values):
+    """build Blocks with the sum of 3 consecutive values"""
+    blocks = []
+    for i in range(0, len(values)-2):
+        blocks.append(int(values[i]) + int(values[i+1]) + int(values[i+2]))
         i += 1
-    return increased
+    return blocks
+# end::buildBlocks[]
+
+
+
 
 print("----------------Puzzle 1--------------")
 
-f = open("day1/test.txt", "r")
-test_lines = f.readlines()
-f.close()
+# tag::example1[]
+test_values = parseInput("test.txt")
 print("Test input, should be 7")
-blub = doSomething(test_lines)
+blub = countIncreased(test_values)
 print(blub)
+# end::example1[]
 
-f = open("day1/input.txt", "r")
-lines = f.readlines()
-f.close()
+values = parseInput("input.txt")
 print("Real Input")
-blub = doSomething(lines)
+blub = countIncreased(values)
 print(blub)
 
 
 print("----------------Puzzle 2--------------")
 
+# tag::example2[]
 print("Test input, should be 5")
-blub = doSomethingNew(test_lines)
+test_blocks = buildBlocks(test_values)
+blub = countIncreased(test_blocks)
 print(blub)
+# end::example2[]
 
 print("Real Input")
-blub = doSomethingNew(lines)
+blocks = buildBlocks(values)
+blub = countIncreased(blocks)
 print(blub)

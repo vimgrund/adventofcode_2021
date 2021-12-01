@@ -2,7 +2,7 @@
 
 link:https://adventofcode.com/2021[Advent of Code 2021]
 
-== day 1
+link:day1/README.adoc[Day 1]
 
 one pitfall here is that you need to cast the lines to int in order to solve the puzzle correcty. +
 For the second puzzle make sure to not use the last two lines since the cannot form a full block anymore
