@@ -2,5 +2,5 @@
 
 == day 1
 
-one pitfall here is that you need to cast the lines to int in order to solve the puzzle correcty.
+one pitfall here is that you need to cast the lines to int in order to solve the puzzle correcty. +
 For the second puzzle make sure to not use the last two lines since the cannot form a full block anymore
